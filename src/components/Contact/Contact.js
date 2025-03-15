@@ -1,6 +1,8 @@
 import React from "react";
-
+import { withNavigation } from "../../WithNavigation";
 class AddContact extends React.Component {
+
+   
     state = {
         name: '',
         email: ''
@@ -28,8 +30,10 @@ class AddContact extends React.Component {
                     <div className="field">
                         <button className="ui button blue" onClick={(e)=> {
                             this.props.addContacts(this.state.name, this.state.email,e)
+                            
                             this.setState({name: ''})
                             this.setState({email: ''})
+                            this.props.navigate('/')
                         }}>Add</button>
                     </div>
                 </form>
@@ -38,4 +42,4 @@ class AddContact extends React.Component {
     }
 };
 
-export default AddContact;
+export default withNavigation(AddContact);

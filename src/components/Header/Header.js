@@ -2,9 +2,9 @@ import React from "react";
 
 const Header = () => {
     return (
-        <div className="ui fixed menu">
-            <div className="ui container center">
-                <h2>Contact Manager</h2>
+        <div style={{display: "flex", flexDirection: 'column', alignItems: 'center',justifyContent: 'center', height: 100}}>
+            <div>
+                <h1>Contact Manager</h1>
             </div>
         </div>
     )

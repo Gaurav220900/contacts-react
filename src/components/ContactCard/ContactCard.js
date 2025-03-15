@@ -1,20 +1,32 @@
 import React from "react";
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {Link} from 'react-router-dom';
 const ContactCard = ({contact, deleteContact}) => {
+
+    const UserIcon = () => {
+        return <AccountCircleIcon style={{ fontSize: 40, color: "black" }} />;
+      };
+
     return(
-        <div className="item">
-            <div className="content">
-                <div className="header">
-                    {contact.name}
-                </div>
-                <div>
-                    {contact.email}
-                </div>
+        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: '1px solid black', margin: "8px 0px"}}>
+           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+     
+            <UserIcon />
+            <div>
+            <Link to={`/contact/${contact.id}`} state = {{contact}}>
+            <div style={{ fontSize: 18, fontWeight: "bold" }}>{contact.name}</div>
+            <div style={{ color: "gray" }}>{contact.email}</div>
+            </Link>
             </div>
-            <button onClick={() => deleteContact(contact.id)}>
-            <i className="trash alternate outline icon"
-            style={{marginTop: 7, color: 'red'}}></i>
-            </button>
+            </div>
+
+    
+    <button
+      onClick={() => deleteContact(contact.id)}
+      style={{ background: "none", border: "none", cursor: "pointer" }}
+    >
+      <i className="trash alternate outline icon" style={{ color: "red" }}></i>
+    </button>
         </div>
     )
 };
