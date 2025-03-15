@@ -5,7 +5,6 @@ import { Link, useLocation } from "react-router-dom";
 const ContactDetail = () => {
     const location = useLocation();
     const { contact } = location.state;
-    console.log(contact);
     
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent:'center'}}>

@@ -29,7 +29,7 @@ class AddContact extends React.Component {
                     </div>
                     <div className="field">
                         <button className="ui button blue" onClick={(e)=> {
-                            this.props.addContacts(this.state.name, this.state.email,e)
+                            this.props.addContacts(this.state.name, this.state.email,e);
                             
                             this.setState({name: ''})
                             this.setState({email: ''})

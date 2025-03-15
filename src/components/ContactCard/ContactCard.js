@@ -20,13 +20,21 @@ const ContactCard = ({contact, deleteContact}) => {
             </div>
             </div>
 
-    
+    <div>
     <button
       onClick={() => deleteContact(contact.id)}
       style={{ background: "none", border: "none", cursor: "pointer" }}
     >
       <i className="trash alternate outline icon" style={{ color: "red" }}></i>
     </button>
+    <Link to={`/edit`} state = {{contact}} >
+        <button
+            style={{ marginLeft: '5px', background: "none", border: "none", cursor: "pointer" }}
+        >
+        <i className="edit alternate outline icon" style={{ color: "red" }}></i>
+        </button>
+    </Link>
+        </div>
         </div>
     )
 };
