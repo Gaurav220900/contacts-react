@@ -3,6 +3,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Link} from 'react-router-dom';
 const ContactCard = ({contact, deleteContact}) => {
 
+    console.log(contact);
+    
     const UserIcon = () => {
         return <AccountCircleIcon style={{ fontSize: 40, color: "black" }} />;
       };

@@ -12,6 +12,7 @@ function App() {
 
   const [contacts,setContacts] = useState([]);
   console.log(contacts);
+  
   const addContacts = async (name, email,e) => {
     e.preventDefault();
     const request = {
@@ -20,7 +21,7 @@ function App() {
       email
     }
     const response = await api.post('/contacts',request);
-    return setContacts(...contacts,response.data);
+    return setContacts([...contacts,response.data]);
   }
   
   useEffect(() => {
@@ -31,7 +32,7 @@ function App() {
 
     getAllContacts();
 
-  }, [contacts]);
+  }, []);
   
   const deleteContact = async (id) => {
     await api.delete(`/contacts/${id}`);
@@ -39,8 +40,12 @@ function App() {
   }
 
   const updateContact = async(name,email,id) => {
-    const response = await api.put(`/contacts/${id}`);
-    setContacts(contacts.map(contact => {
+    const body = {
+      name,
+      email
+    }
+    const response = await api.put(`/contacts/${id}`, body);
+    return setContacts(contacts.map(contact => {
       return contact.id === id ? response.data : contact
     }));
   } 

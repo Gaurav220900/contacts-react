@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { withNavigation } from "../../WithNavigation";
-import {Link, useLocation} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 const EditContact = ({updateContact}) => {
      const location = useLocation();
+     console.log(location);
+     const navigate = useNavigate();
+     
      const { contact } = location.state;
 
      const [name,setName] = useState(contact.name);
@@ -29,9 +32,9 @@ const EditContact = ({updateContact}) => {
                 <div className="field">
                     <button className="ui button blue" onClick={(e)=> {
                         updateContact(name,email,contact.id);
-                        this.setState({name: ''})
-                        this.setState({email: ''})
-                        this.props.navigate('/')
+                        setEmail('');
+                        setName('');
+                        navigate('/')
                     }}>Update Contact</button>
                 </div>
             </form>

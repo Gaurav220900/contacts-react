@@ -3,6 +3,8 @@ import ContactCard from "../ContactCard/ContactCard";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 const ContactList = ( {contacts, deleteContact}) => {
+    console.log(contacts);
+    
     return(
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
@@ -15,9 +17,11 @@ const ContactList = ( {contacts, deleteContact}) => {
                     </Link>
                 </div>
             </div>
+            <div>
             { contacts.map((contact) => {
             return <ContactCard contact={contact} deleteContact={deleteContact} />
             }) }
+            </div>
         </div>
      )
 };
