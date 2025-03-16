@@ -11,8 +11,24 @@ import api from './api';
 function App() {
 
   const [contacts,setContacts] = useState([]);
-  console.log(contacts);
-  
+  const [searchTerm,setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const searchHandler = async(term) => {
+      setSearchTerm(term)
+      if(searchTerm !== null){
+        const newContactList = contacts.filter((contact) => {
+            return Object.values(contact)
+            .join(" ")
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase());
+        });
+        setSearchResults(newContactList);
+      }else{
+        setSearchResults(contacts);
+      }
+  }
+
   const addContacts = async (name, email,e) => {
     e.preventDefault();
     const request = {
@@ -56,7 +72,7 @@ function App() {
          <Header />
          
       <Routes>
-        <Route path="/" element={<ContactList deleteContact={deleteContact} contacts={contacts} />} />
+        <Route path="/" element={<ContactList searchTerm={searchTerm} searchHandler={searchHandler} deleteContact={deleteContact} contacts={searchTerm.length < 1 ? contacts: searchResults} />} />
         <Route path="/add" element={<AddContact addContacts={addContacts} />} />
         <Route path='/contact/:id' element={<ContactDetail />} />
         <Route path='/edit' element={<EditContact updateContact = {updateContact}/>} />
